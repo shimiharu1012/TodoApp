@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
+import { isConstructorDeclaration } from 'typescript';
 
 function App() {
-
+  // 入力フォーム
   const [inputValue,setInputValue]=useState("")
+  // Todoのリスト
   const [todos,setTodos]=useState<Todo[]>([]);
   
   type Todo={
@@ -18,6 +20,7 @@ function App() {
   }
 
   const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
+    console.log('handleSubmit is called!!')
     e.preventDefault();
 
     //新しいTodoを作成
@@ -29,7 +32,7 @@ function App() {
 
     
     setTodos([newTodo,...todos]);
-    setInputValue("");
+    setInputValue('');
   }
 
   const handleEdit=(id: number,inputValue: string)=>{
@@ -64,7 +67,7 @@ function App() {
       <div>
         <h2>Todoリスト with Typescript</h2>
         <form onSubmit={(e)=>handleSubmit(e)}>
-          <input type="text" onChange={(e)=>handleChange(e)} className="inputText"></input>
+          <input type="text" value={inputValue} onChange={(e)=>handleChange(e)} className="inputText"></input>
           <input type="submit" value="作成" className='submitButton'></input>
         </form>
         <ul className='todoList'>
