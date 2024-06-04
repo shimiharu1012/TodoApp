@@ -83,7 +83,7 @@ function App() {
                 type="checkbox"
                 onChange={(e)=>handleChecked(todo.id,todo.checked)} >
               </input>
-              <button onClick={()=>handleDelete(todo.id)}>delete</button>
+              <button onClick={()=>handleDelete(todo.id)}>削除</button>
             </li>
           ))}
         </ul>
